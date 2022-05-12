@@ -1,5 +1,5 @@
 {
-    "name": "rust/migrations",
+    "name": "hrustbb2/migrations",
     "require": {
         "robmorgan/phinx": "^0.12.10"
     },
