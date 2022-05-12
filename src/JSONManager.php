@@ -10,14 +10,6 @@ class JSONManager implements IManager {
 
     protected string $migrationsPath;
 
-    const MYSQL_DRIVER = 'mysql';
-
-    const PGSQL_DRIVER = 'pgsql';
-
-    const SQLITE_DRIVER = 'sqlite';
-
-    const SQLSRV_DRIVER = 'sqlsrv';
-
     protected string $driver = self::MYSQL_DRIVER;
 
     protected string $dbHost;
@@ -133,6 +125,7 @@ class JSONManager implements IManager {
     public function migrate(array $migrations):void
     {
         foreach($migrations as $timestamp=>$migration){
+            $migration['obj']->setAdatter($this->adapter);
             $migration['obj']->up($this->settings);
             $row = [
                 'timestamp' => $timestamp,
@@ -152,6 +145,7 @@ class JSONManager implements IManager {
             require $this->migrationsPath . '/' . $file;
             $class = $m[1] . '_' . $m[2];
             $migrationObj = new $class($this->adapter);
+            $migrationObj->setAdatter($this->adapter);
             $migrationObj->down($this->settings);
             $str = json_encode($this->migrations, JSON_PRETTY_PRINT);
             file_put_contents($this->migrationsPath . '/migrations.json', $str);

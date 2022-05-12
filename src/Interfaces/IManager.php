@@ -3,6 +3,10 @@
 namespace hrustbb2\Migrations\Interfaces;
 
 interface IManager {
+    const MYSQL_DRIVER = 'mysql';
+    const PGSQL_DRIVER = 'pgsql';
+    const SQLITE_DRIVER = 'sqlite';
+    const SQLSRV_DRIVER = 'sqlsrv';
     public function setDriver(string $driver): void;
     public function setDbHost(string $host): void;
     public function setDbName(string $dbName): void;
