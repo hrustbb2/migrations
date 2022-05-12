@@ -5,7 +5,6 @@ namespace hrustbb2\Migrations;
 use hrustbb2\Migrations\Interfaces\IManager;
 use Phinx\Db\Adapter\AdapterFactory;
 use Phinx\Db\Adapter\AdapterInterface;
-use stdClass;
 
 class JSONManager implements IManager {
 

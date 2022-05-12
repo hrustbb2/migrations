@@ -12,4 +12,7 @@ interface IManager {
     public function setMigrationPath(string $path): void;
     public function setSettings(array $settings): void;
     public function init(): void;
+    public function getNewMigrations():array;
+    public function migrate(array $migrations):void;
+    public function rollback():void;
 }
